@@ -1,64 +1,24 @@
+import {Player, Enemy, Platform, Obstacles, Currency} from './classes'
 
 const canvas = document.getElementById("canvas") as HTMLCanvasElement;
 const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
 
 ctx.fillStyle = "purple";
-ctx.fillRect(20, 20, 20, 20);
+ctx.lineWidth = 10;
 
+// Wall
+ctx.strokeRect(75, 140, 150, 110);
 
+// Door
+ctx.fillRect(130, 190, 40, 60);
 
-class Player {
-   position: number;
-   velocity: number;
-   movement: string;
-  
-  constructor (position: number, velocity: number, movement: string) {
-    this.position = position;
-    this.velocity = velocity;
-    this.movement = movement;
-  }
+// Roof
+ctx.beginPath();
+ctx.moveTo(50, 140);
+ctx.lineTo(150, 60);
+ctx.lineTo(250, 140);
+ctx.closePath();
+ctx.stroke();
+function enviroment() {
+
 }
-
-class Platform {
-  position: number;
-  height: number;
-  width: number;
-  material: string;
-
-  constructor(position: number, height: number, width: number, material: string) {
-    this.position = position;
-    this.height = height;
-    this.width = width;
-    this.material = material
-  }
-}
-
-class Obstacles {
-  position: number;
-  height: number;
-  width: number;
-  material: string;
-
-  constructor(position: number, height: number, width: number, material: string) {
-    this.position = position;
-    this.height = height;
-    this.width = width;
-    this.material = material
-  }
-}
-
-class Currency {
-  position: number;
-  value: number;
-  color: string;
-  material: string;
-
-  constructor (position: number, value: number, color: string, material: string) {
-    this.position = position;
-    this.value = value;
-    this.color = color;
-    this.material = material
-  }
-}
-
-
