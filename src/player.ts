@@ -46,7 +46,7 @@ export function movementPlayer() {
     }
     // Jumping logic
     if (keys.up && !player.isJumping) {
-        player.velocityY = -10; // Apply jump velocity (negative to move up)
+        player.velocityY = -12; // Apply jump velocity (negative to move up)
         player.isJumping = true;
     }
 

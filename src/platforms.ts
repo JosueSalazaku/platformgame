@@ -16,7 +16,7 @@ export class Platform {
 }
 
 export function drawPlatform() {
-
+    //  Different tpyes of platforms for differnt levels with different points
     let platforms: Platform[] = [
         new Platform(10, 153, 400, 70, "blue", 0),
         new Platform(420, 240, 400, 70, "green", 10),
