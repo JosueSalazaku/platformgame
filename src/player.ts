@@ -2,7 +2,7 @@ import { canvas, ctx } from "./main";
 import { keys } from "./main";
 
 // Player object and variables
-let groundLevel = 0;
+let groundLevel: number;
 let gravity = 0.5; 
 
 export let player = {
@@ -44,17 +44,13 @@ export function movementPlayer() {
     if (keys.right) {
         player.x += 5;
     }
-
     // Jumping logic
     if (keys.up && !player.isJumping) {
         player.velocityY = -10; // Apply jump velocity (negative to move up)
         player.isJumping = true;
     }
 
-    // Apply gravity to bring the player back down
     player.velocityY += gravity;
-
-    // Update player position based on velocity
     player.y += player.velocityY;
 
     // Handle collision with the ground
@@ -62,6 +58,9 @@ export function movementPlayer() {
         player.y = groundLevel - player.height;  // Keep the player on the ground
         player.velocityY = 0;                    // Stop downward movement
         player.isJumping = false;                // Reset jump state
+
+        console.log(`VelocityY: ${player.velocityY}, PositionY: ${player.y}`);
+
     }
 }
 

@@ -1,4 +1,5 @@
 import { drawPlayer, movementPlayer, initializePlayer } from "./player";
+import { drawPlatform, Platform } from "./platforms";
 
 export let canvas: HTMLCanvasElement;
 export let ctx: CanvasRenderingContext2D;
@@ -44,9 +45,9 @@ export function enviroment() {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
-export function drawPlatform() {
-    // Platform drawing logic here
-}
+
+
+
 
 export function drawEnemy() {
     // Enemy drawing logic here
