@@ -1,88 +1,75 @@
-import type { Player } from './../types'
-const canvas = document.getElementById("canvas") as HTMLCanvasElement;
-const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
+import { drawPlayer, movementPlayer, initializePlayer } from "./player";
 
-// Game world variables
-// let gravity = 0.5;
-// let groundLevel = canvas.height - 50;
+export let canvas: HTMLCanvasElement;
+export let ctx: CanvasRenderingContext2D;
 
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize canvas and context only after DOM content is loaded
+    canvas = document.getElementById("canvas") as HTMLCanvasElement;
+    if (!canvas) {
+        console.error("Canvas element not found!");
+        return;
+    }
 
+    ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
 
-export let player: Player = {
-    x: 10, // Initial x position
-    y: 550, // Initial y position
-    color: "purple",
-    width: 40,
-    height: 40,
-    velocityX: 0, // Horizontal velocity
-    velocityY: 0, // Vertical velocity (for jumping) 
-    isJumping: false, // Track if player is in mid-air
-};
-  
+    if (!ctx) {
+        console.error("Canvas context could not be initialized!");
+        return;
+    }
+
+    // Initialize player (setting ground level and other properties)
+    initializePlayer();
+
+    // Start game loop once everything is properly initialized
+    gameLoop();
+});
+
 function gameLoop() {
-    movementPlayer()
-    enviroment()
-    drawPlayer()
-    drawPlatform()
-    drawEnemy()
-    movementPlayer()
-    movementEnemy()
-    requestAnimationFrame(gameLoop)
+    enviroment();
+    movementPlayer();
+    drawPlayer();
+    drawPlatform();
+    drawEnemy();
+    movementEnemy();
+    requestAnimationFrame(gameLoop);
 }
 
 export function enviroment() {
+    if (!canvas || !ctx) return; // Check if canvas and context are initialized
+
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+
+    const groundLevel = canvas.height - 50;
+    const gravity = 0.5;
 
     ctx.fillStyle = "#242424";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
-  
-export function drawPlayer() {
-    //fillRect(x axis, y axis, width, height)
-    ctx.fillStyle = player.color;
-    ctx.fillRect(player.x, player.y, player.width, player.height)
-    player.x += player.velocityX;
-    player.y += player.velocityY;
-}
 
 export function drawPlatform() {
-
+    // Platform drawing logic here
 }
 
 export function drawEnemy() {
-
-}
-
-export function movementPlayer() {
-    if (keys.left) {
-        player.x -= 5
-    }
-
-    if (keys.right) {
-        player.x += 5
-    }
-
-    if (keys.up && !player.isJumping) {
-        player.velocityY = -10;
-        player.isJumping = true;
-    }
+    // Enemy drawing logic here
 }
 
 export function movementEnemy() {
-
+    // Enemy movement logic here
 }
 
-
-let keys = {
+// Key state tracking
+export let keys = {
     left: false,
     right: false,
     up: false,
     down: false
 };
 
+// Event listeners for keyboard controls
 document.addEventListener('keydown', (event) => {
-    // all movement logics
     if (event.key === "ArrowLeft") {
         keys.left = true;
     } else if (event.key === "ArrowRight") {
@@ -90,20 +77,14 @@ document.addEventListener('keydown', (event) => {
     } else if (event.key === "ArrowUp" || event.key === " ") {
         keys.up = true;
     }
-})
+});
 
 document.addEventListener('keyup', (event) => {
-    // To stop moving 
     if (event.key === "ArrowLeft") {
-      keys.left = false; 
+      keys.left = false;
     } else if (event.key === "ArrowRight") {
       keys.right = false;
     } else if (event.key === "ArrowUp" || event.key === " ") {
       keys.up = false;
     }
-  });
-
-
-
-gameLoop()
-
+});
