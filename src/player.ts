@@ -58,9 +58,6 @@ export function movementPlayer() {
         player.y = groundLevel - player.height;  // Keep the player on the ground
         player.velocityY = 0;                    // Stop downward movement
         player.isJumping = false;                // Reset jump state
-
-        console.log(`VelocityY: ${player.velocityY}, PositionY: ${player.y}`);
-
     }
 }
 

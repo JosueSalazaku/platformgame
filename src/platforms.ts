@@ -1,4 +1,4 @@
-import { canvas, ctx } from "./main";
+import { ctx } from "./main";
 
 
 export class Platform {
@@ -18,8 +18,8 @@ export class Platform {
 export function drawPlatform() {
 
     let platforms: Platform[] = [
-        new Platform(10, 0, 400, 70, "blue", 0),
-        new Platform(420, 0, 400, 70, "green", 10),
+        new Platform(10, 153, 400, 70, "blue", 0),
+        new Platform(420, 240, 400, 70, "green", 10),
         new Platform(840, 0, 400, 70, "red", 20),
         new Platform(1260, 0, 400, 70, "yellow", 30),
         new Platform(1680, 0, 400, 70, "purple", 40)
