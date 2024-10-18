@@ -36,13 +36,9 @@ function gameLoop() {
 }
 
 export function enviroment() {
-    if (!canvas || !ctx) return; // Check if canvas and context are initialized
-
+    if (!canvas || !ctx) return; 
     canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    const groundLevel = canvas.height - 50;
-    const gravity = 0.5;
+    canvas.height = window.innerHeight / 2
 
     ctx.fillStyle = "#242424";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
