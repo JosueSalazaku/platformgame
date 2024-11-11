@@ -1,4 +1,4 @@
-import { drawPlayer, movementPlayer, initializePlayer } from "./player";
+import { drawPlayer, movementPlayer, initializePlayer, player } from "./player";
 import { Ground } from "./ground";
 import { Platform } from "./platforms";
 
@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function gameLoop() {
     enviroment();
+    applyGravityCollision()
     movementPlayer();
     drawPlayer();
     drawAllPlatforms()
@@ -67,7 +68,33 @@ export function drawAllPlatforms() {
     platforms.forEach(platform => platform.draw())
 }
 
+export function applyGravityCollision() {
+    const gravity = 0.5;
 
+    player.velocityY += gravity;
+    player.x += player.velocityY;
+
+    let onPlatform = false;
+
+    platforms.forEach(platform => {
+        if (platform.isCollidingWithPlayer(player)) {
+            player.y = platform.position.y - player.height;
+            player.velocityY = 0;
+            player.isJumping = false;
+            onPlatform = true;
+        }
+    })
+
+    if (!onPlatform && player.y + player.height < canvas.height) {
+        player.isJumping = true
+    }
+
+    if (player.y + player.height >= canvas.height) {
+        player.y = canvas.height - player.height;
+        player.velocityY = 0;
+        player.isJumping = false;
+    }
+}
 
 
 
