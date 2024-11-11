@@ -1,6 +1,4 @@
 import { ctx } from "./main";
-
-
 export class Platform {
     position: { x: number; y: number };
     size: {width: number, height: number}
@@ -13,13 +11,24 @@ export class Platform {
         this.color = color;
         this.points = points;
     }
+    isCollidingWithPlayer(player: { x: number; y: number; width: number; height: number }): boolean  {
+        const playerBottom = player.y + player.height;
+        const playerTop = player.y;
+        const playerRight = player.x + player.width;
+        const playerLeft = player.x;
+
+        const platformTop = this.position.y;
+        const platformBottom = this.position.y + this.size.height;
+        const platformRight = this.position.x + this.size.width;
+        const platformLeft = this.position.x;
+
+        return playerBottom > platformTop &&
+               playerTop < platformBottom &&
+               playerRight > platformLeft &&
+               playerLeft < platformRight;
+    }
 }
 
-export class mainPlatform extends Platform {
-
-}
-
-new mainPlatform(10, 153, 400, 70, "blue", 0)
 
 export function drawPlatform() {
     //  Different tpyes of platforms for differnt levels with different points

@@ -7,7 +7,7 @@ let gravity = 0.5;
 
 export let player = {
     x: 10, // Initial x position
-    y: 2, // Initial y position, will be updated based on ground level
+    y: 0, // Initial y position, will be updated based on ground level
     color: "purple",
     width: 40,
     height: 40,

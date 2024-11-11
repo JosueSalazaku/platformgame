@@ -1,5 +1,5 @@
 import { drawPlayer, movementPlayer, initializePlayer } from "./player";
-import { drawPlatform, Platform } from "./platforms";
+import { drawPlatform} from "./platforms";
 import { Ground } from "./ground";
 
 export let canvas: HTMLCanvasElement;
