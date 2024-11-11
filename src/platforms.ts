@@ -15,11 +15,17 @@ export class Platform {
     }
 }
 
+export class mainPlatform extends Platform {
+
+}
+
+new mainPlatform(10, 153, 400, 70, "blue", 0)
+
 export function drawPlatform() {
     //  Different tpyes of platforms for differnt levels with different points
     let platforms: Platform[] = [
         new Platform(10, 153, 400, 70, "blue", 0),
-        new Platform(420, 240, 400, 70, "green", 10),
+        new Platform(420, 440, 400, 70, "green", 10),
         new Platform(840, 0, 400, 70, "red", 20),
         new Platform(1260, 0, 400, 70, "yellow", 30),
         new Platform(1680, 0, 400, 70, "purple", 40)

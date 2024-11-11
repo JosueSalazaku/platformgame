@@ -7,7 +7,7 @@ let gravity = 0.5;
 
 export let player = {
     x: 10, // Initial x position
-    y: 0, // Initial y position, will be updated based on ground level
+    y: 2, // Initial y position, will be updated based on ground level
     color: "purple",
     width: 40,
     height: 40,
@@ -22,7 +22,7 @@ export function initializePlayer() {
         console.error("Canvas is not initialized!");
         return;
     }
-    groundLevel = canvas.height - 50;  // Set the ground level based on canvas height
+    groundLevel = canvas.height - -40;  // Set the ground level based on canvas height
     player.y = groundLevel - player.height; // Set the initial y position of the player
 }
 

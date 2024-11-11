@@ -1,5 +1,5 @@
 import { drawPlayer, movementPlayer, initializePlayer } from "./player";
-import { drawPlatform } from "./platforms";
+import { drawPlatform, Platform } from "./platforms";
 
 export let canvas: HTMLCanvasElement;
 export let ctx: CanvasRenderingContext2D;
@@ -39,9 +39,9 @@ function gameLoop() {
 export function enviroment() {
     if (!canvas || !ctx) return; 
     canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight / 2
+    canvas.height = window.innerHeight / 1.4
 
-    ctx.fillStyle = "#242424";
+    ctx.fillStyle = "#white";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
