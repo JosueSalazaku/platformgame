@@ -9,4 +9,9 @@ export class Ground {
         this.size = { width, height }
         this.color = color;
     }
+
+    draw(ctx: CanvasRenderingContext2D) {
+        ctx.fillStyle = this.color
+        ctx.fillRect(this.position.x, this.position.y, this.size.height, this.size.width)
+    }
 }

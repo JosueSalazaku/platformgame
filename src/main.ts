@@ -1,5 +1,6 @@
 import { drawPlayer, movementPlayer, initializePlayer } from "./player";
 import { drawPlatform, Platform } from "./platforms";
+import { Ground } from "./ground";
 
 export let canvas: HTMLCanvasElement;
 export let ctx: CanvasRenderingContext2D;
@@ -36,13 +37,22 @@ function gameLoop() {
     requestAnimationFrame(gameLoop);
 }
 
+let ground: Ground;
+
 export function enviroment() {
     if (!canvas || !ctx) return; 
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight / 1.4
 
-    ctx.fillStyle = "#white";
+    ctx.fillStyle = "white";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    if (!ground) {
+        ground = new Ground(0, canvas.height - 135, canvas.width, 1900, "#ebbb8a"); 
+    }
+    
+    ground.draw(ctx);
+    
 }
 
 
