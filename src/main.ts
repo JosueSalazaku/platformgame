@@ -1,5 +1,4 @@
 import { drawPlayer, movementPlayer, initializePlayer } from "./player";
-import { drawPlatform} from "./platforms";
 import { Ground } from "./ground";
 
 export let canvas: HTMLCanvasElement;
@@ -31,7 +30,6 @@ function gameLoop() {
     enviroment();
     movementPlayer();
     drawPlayer();
-    drawPlatform();
     drawEnemy();
     movementEnemy();
     requestAnimationFrame(gameLoop);
