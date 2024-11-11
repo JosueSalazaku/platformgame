@@ -1,8 +1,17 @@
 import { drawPlayer, movementPlayer, initializePlayer } from "./player";
 import { Ground } from "./ground";
+import { Platform } from "./platforms";
 
 export let canvas: HTMLCanvasElement;
 export let ctx: CanvasRenderingContext2D;
+
+const platforms: Platform[] = [
+    new Platform(10, 153, 400, 70, "blue", 0),
+    new Platform(420, 440, 400, 70, "green", 10),
+    new Platform(840, 300, 400, 70, "red", 20),
+    new Platform(1260, 150, 400, 70, "yellow", 30),
+    new Platform(1680, 0, 400, 70, "purple", 40)
+];
 
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize canvas and context only after DOM content is loaded
@@ -30,6 +39,7 @@ function gameLoop() {
     enviroment();
     movementPlayer();
     drawPlayer();
+    drawAllPlatforms()
     drawEnemy();
     movementEnemy();
     requestAnimationFrame(gameLoop);
@@ -51,6 +61,10 @@ export function enviroment() {
     
     ground.draw(ctx);
     
+}
+
+export function drawAllPlatforms() {
+    platforms.forEach(platform => platform.draw())
 }
 
 
