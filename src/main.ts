@@ -18,6 +18,9 @@ function gameLoop() {
 }
 
 function environment() {
+    //clear canvas
+    ctx?.clearRect(0, 0, canvas.width, canvas.height)
+
     Hero.draw();
     ground.draw();
     //platform
