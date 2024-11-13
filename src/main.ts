@@ -30,3 +30,37 @@ function environment() {
 }
 
 gameLoop()
+
+let keys = {
+    left: false,
+    right: false,
+    up: false,
+}
+
+window.addEventListener("keydown", (event) => {
+    if (event.code === "ArrowLeft") {
+        keys.left = true;
+    }
+    if (event.code === "ArrowRight") {
+        keys.right = true;
+    }
+    if (event.code === "ArrowUp" || event.code === "Space") {
+        keys.up = true;
+    }     
+    console.log(event.code);    
+})
+
+window.addEventListener("keyup", (event) => {
+    if (event.code === "ArrowLeft") {
+        keys.left = false;
+    }
+    if (event.code === "ArrowRight") {
+        keys.right = false;
+    }
+    if (event.code === "ArrowUp" || event.code === "Space") {
+        keys.up = false;
+    }   
+    console.log(event.code);
+})
+
+//ArrowRight, ArrowLeft, ArrowUp, ArrowDown

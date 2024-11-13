@@ -23,9 +23,8 @@ export class Platform {
 }
 
 export let platforms: Platform[] = [
-    new Platform(0, 12, "green", 210, 100),
-    new Platform(120, 12, "red", 210, 100),
-    new Platform(240, 12, "Yellow", 210, 100),
-    new Platform(460, 12, "blue", 210, 100),
-    new Platform(580, 12, "rose", 210, 100),
+    new Platform(320, 700, "red", 210, 50),
+    new Platform(600, 445, "Yellow", 210, 50),
+    new Platform(560, 12, "blue", 210, 50),
+    new Platform(680, 12, "purple", 210, 50),
 ]

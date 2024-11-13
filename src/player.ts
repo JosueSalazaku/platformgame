@@ -40,4 +40,3 @@ export class Player {
 }
 
 export let Hero = new Player(0, 800, "purple", 40, 40, 0, 0, false)
-console.log(Hero)
