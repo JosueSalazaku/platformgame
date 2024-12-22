@@ -8,10 +8,10 @@ ctx?.canvas;
 
 canvas.width = 1700;
 canvas.height = 900;
-export let gravitiy = 0.5;
+export let gravitiy = 0.8;
 export let heroSpeed = 5;
 export let heroJump = -5;
-export let groundPositionY = 800
+export let groundPositionY = 840
 
 let keys = {
     left: false,
@@ -21,17 +21,25 @@ let keys = {
 
 function gameLoop() {
     environment()
-
+    requestAnimationFrame(gameLoop)
 }
 
 function environment() {
     Hero.velocityY += gravitiy;
     Hero.y += Hero.velocityY;
+    Hero.x += Hero.velocityX
+
+    let bottomEdge = Hero.y + Hero.height
 
     if (Hero) {
         groundPositionY
     }
 
+    if (bottomEdge >= groundPositionY) {
+        Hero.y = groundPositionY - Hero.height;
+        Hero.velocityY = 0;
+        Hero.isJumping = false;
+    }
     heroMovement()
     //clear canvas
     ctx?.clearRect(0, 0, canvas.width, canvas.height)
@@ -62,8 +70,6 @@ function heroMovement() {
 }
 
 gameLoop()
-
-
 
 window.addEventListener("keydown", (event) => {
     if (event.code === "ArrowLeft") {

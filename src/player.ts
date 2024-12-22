@@ -1,14 +1,5 @@
 import { ctx } from "./main";
 
-// x: 0,
-// y: 12,
-// color: "purple",
-// width: 40,
-// height: 40,
-// velocityX: 0,
-// velocityY: 0,
-// isJumping: false,
-
 export class Player {
     x: number;
     y: number;
