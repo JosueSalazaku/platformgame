@@ -10,7 +10,7 @@ canvas.width = 1700;
 canvas.height = 900;
 export let gravitiy = 0.8;
 export let heroSpeed = 5;
-export let heroJump = -5;
+export let heroJump = -20; // Adjusted for a higher jump
 export let groundPositionY = 840
 
 let keys = {
@@ -31,41 +31,34 @@ function environment() {
 
     let bottomEdge = Hero.y + Hero.height
 
-    if (Hero) {
-        groundPositionY
-    }
-
     if (bottomEdge >= groundPositionY) {
         Hero.y = groundPositionY - Hero.height;
         Hero.velocityY = 0;
         Hero.isJumping = false;
     }
+
     heroMovement()
-    //clear canvas
     ctx?.clearRect(0, 0, canvas.width, canvas.height)
 
     Hero.draw();
     ground.draw();
-    //platform
     for (let i = 0; i < platforms.length; ++i) {
         platforms[i].draw()
     }
 }
 
 function heroMovement() {
-    if (Hero) {
-        if (keys.left) {
-            Hero.velocityX = -heroSpeed;
-        } else if (keys.right) {
-            Hero.velocityX = heroSpeed;
-        } else {
-            Hero.velocityX = 0;
-        }
+    if (keys.left) {
+        Hero.velocityX = -heroSpeed;
+    } else if (keys.right) {
+        Hero.velocityX = heroSpeed;
+    } else {
+        Hero.velocityX = 0;
+    }
 
-        if (keys.up && !Hero.isJumping) {
-            Hero.velocityY = heroJump
-            Hero.isJumping = true
-        }
+    if (keys.up && !Hero.isJumping) {
+        Hero.velocityY = heroJump;
+        Hero.isJumping = true;
     }
 }
 
@@ -80,9 +73,8 @@ window.addEventListener("keydown", (event) => {
     }
     if (event.code === "ArrowUp" || event.code === "Space") {
         keys.up = true;
-    }     
-    console.log(event.code);    
-})
+    }
+});
 
 window.addEventListener("keyup", (event) => {
     if (event.code === "ArrowLeft") {
@@ -93,5 +85,5 @@ window.addEventListener("keyup", (event) => {
     }
     if (event.code === "ArrowUp" || event.code === "Space") {
         keys.up = false;
-    }   
-})
+    }
+});
